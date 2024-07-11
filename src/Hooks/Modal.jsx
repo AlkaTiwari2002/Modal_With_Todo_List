@@ -1,28 +1,40 @@
-import React, { useState } from 'react';
-import '../App.css'
+import React, { useState, useEffect, useRef } from 'react';
 
-function Modal({ closeModal, handleAddTask }) {
-  const [task, setTask] = useState('');
+function Modal({ closeModal, handleAddTask, taskInput, setTaskInput, isEditing }) {
+  const [inputValue, setInputValue] = useState(taskInput);
+  const inputRef = useRef(null);
 
-  const handleChange = (e) => setTask(e.target.value);
+  useEffect(() => {
+    setInputValue(taskInput);
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [taskInput]);
+
+  const handleChange = (e) => {
+    setInputValue(e.target.value);
+    setTaskInput(e.target.value);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (task.trim()) {
-      handleAddTask(task);
-      setTask('');
-      closeModal();
-    }
+    handleAddTask(inputValue);
   };
 
   return (
     <div className="modal">
       <div className="modal-content">
         <span className="close" onClick={closeModal}>&times;</span>
-        <h2>Add Your Task</h2>
         <form onSubmit={handleSubmit}>
-          <input type="text" value={task} onChange={handleChange} placeholder="Enter task"/>
-          <button type="submit">Add Task</button>
+          <input
+            type="text"
+            value={inputValue}
+            onChange={handleChange}
+            placeholder="Enter your task"
+            ref={inputRef} 
+            required
+          />
+          <button type="submit">{isEditing ? "Save" : "Add Task"}</button>
         </form>
       </div>
     </div>

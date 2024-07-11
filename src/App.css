@@ -4,7 +4,7 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color:burlywood;
+  background-color: burlywood;
   box-sizing: border-box;
 }
 
@@ -19,7 +19,7 @@ ul {
 }
 
 li {
-  background-color:cadetblue;
+  background-color: cadetblue;
   margin: 10px;
   padding: 10px;
   border-radius: 4px;
@@ -45,18 +45,54 @@ li {
   flex-grow: 1;
 }
 
-.tasks .remove {
-  background-color: #f44336;
-  color: white;
+button{
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 20px;
+  transition: background-color 0.3s ease; 
 }
 
-.tasks .remove:hover {
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+
+.remove {
+  background-color: #f44336;
+  color: black;
+}
+
+.remove:hover {
   background-color: #e53935;
 }
+
+.edit {
+  background-color: yellow;
+  color: black;
+  margin-left: 10px;
+}
+
+.edit:hover {
+  background-color: rgb(242, 234, 8);
+}
+
+.status-button{
+  background-color:rgb(4, 188, 4);
+  color: black;
+  margin-left: 10px;
+}
+
+.status-button:hover{
+  background-color: green;
+} 
 
 
 
 /* Modal styles */
+
 .modal {
   display: flex;
   justify-content: center;
@@ -71,7 +107,7 @@ li {
 
 .modal-content {
   background-color:darkseagreen;
-  padding: 20px;
+  padding: 25px;
   border-radius: 4px;
   text-align: center;
   position: relative;
@@ -93,22 +129,4 @@ input{
   border: 1px solid #ddd;
   border-radius: 4px;
   font-size: 22px;
-}
-
-button{
-  background-color: #28a745;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 18px;
-  transition: background-color 0.3s ease; 
-}
-
-button:hover {
-  background-color: #218838;
-}
-
-
-
+} 
